@@ -1,30 +1,23 @@
 import { useState } from "react";
-import Alert from "./components/Alert";
-import Button from "./components/Button";
-import ListGroup from "./components/ListGroup";
 
 const App = () => {
-  const [alertVisible, setAlertVisible] = useState(false);
+  const [game, setGame] = useState({
+    id: 1,
+    player: {
+      name: "John",
+    },
+  });
 
-  const cities = ["Boisie", "Sacramento", "Los Angeles"];
-
-  const handleSelectItem = (item: string) => {
-    console.log(item);
+  const handleClick = () => {
+    setGame({ ...game, player: { ...game.player, name: "Bob" } });
   };
+
   return (
-    <div>
-      <ListGroup
-        items={cities}
-        heading="List"
-        onSelectItem={handleSelectItem}
-      />
-      {alertVisible && (
-        <Alert onClick={() => setAlertVisible(false)}>
-          some important message...
-        </Alert>
-      )}
-      <Button onClick={() => setAlertVisible(true)}>Click me!</Button>
-    </div>
+    <>
+      <p>id: {game.id}</p>
+      <p>name: {game.player.name}</p>
+      <button onClick={handleClick}>change name</button>
+    </>
   );
 };
 
