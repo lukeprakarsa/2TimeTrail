@@ -1,29 +1,32 @@
-import { useState } from "react";
-import Button from "./components/Button";
-import ExpandableText from "./components/ExpandableText";
+import DetailedListGroup from "./components/DetailedListGroup";
+import NavBar from "./components/NavBar";
+import SideBar from "./components/SideBar";
 
 const App = () => {
-  const [expanded, setExpanded] = useState(false);
-
+  const sidebarStyle = {
+    height: "100vh",
+    backgroundColor: "#f8f9fa", // Optional: change the background color
+    padding: 0,
+  };
   return (
-    <div>
-      <ExpandableText maxChar={10} expanded={expanded}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-        adipisci suscipit placeat est, ratione modi itaque deleniti repudiandae
-        optio totam nam tempora alias quod sed repellat velit vel vero ullam
-        possimus ut autem id saepe. Incidunt est error sunt quos corrupti
-        officia. Minus id maxime ullam tenetur ducimus necessitatibus nesciunt
-        laborum accusantium, commodi ex. Ad veniam, fuga voluptatem assumenda
-        eaque rerum nulla quas voluptates numquam saepe sint, nesciunt enim
-        ducimus soluta blanditiis velit cupiditate? Cupiditate voluptate debitis
-        animi aperiam eum inventore repudiandae quaerat esse molestias aliquid
-        minima ipsum, harum illum nemo dolor reprehenderit tempora atque ullam
-        enim culpa fugit. Deleniti!
-      </ExpandableText>
-      <Button onClick={() => setExpanded(!expanded)}>
-        {expanded ? "Less" : "More"}
-      </Button>
-    </div>
+    <>
+      <div className="container-fluid text-center navbar-expand-lg">
+        <div className="row">
+          <NavBar />
+        </div>
+        <div className="row">
+          <div className="col-md-auto" style={sidebarStyle}>
+            <SideBar />
+          </div>
+          <div className="col">
+            <DetailedListGroup />
+          </div>
+          <div className="col">
+            <DetailedListGroup />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
